@@ -1,0 +1,124 @@
+{
+  "main": {
+    "name":"Wendmagegn Kebede",
+    "description":"Full Stack Java Developer",
+    "image":"profilepic.jpg",
+    "bio":"Skilled software developer with over 4 years of hands-on experience designing and implementing enterprise solutions for a variety of projects. Used Java, Spring, Hibernate, NodeJS, React, VS Code, IntelliJ IDEA, Git, Docker, AWS, and Microservices while applying modern design patterns and Software Development Life Cycle methodologies to streamline production workflow. Proven knowledge of industry standards and best practices.",
+    "contactmessage":"I'm always open to new opportunities. Contact me anytime.",
+    "email": "wendm.Kebede@gmail.com",
+    "phone": "651-788-6132",
+    "github":"",
+    "project":"",
+    "address":{
+      "street":"",
+      "city":"Dalls",
+      "state":"Texas",
+      "zip": "75244"
+    },
+    "website": "http://www.wendmbirhanu.click",
+    "resumedownload":"http://wendmbirhanu.click",
+    "social":[
+      {
+        "name":"facebook",
+        "url":"",
+        "className":"fa fa-facebook"
+      },
+      {
+        "name":"twitter",
+        "url":"",
+        "className":"fa fa-twitter"
+      },
+      {
+        "name":"linkedin",
+        "url":"https://www.linkedin.com/in/wendmagegn-kebede/",
+        "className":"fa fa-linkedin"
+      },
+      {
+        "name":"instagram",
+        "url":"",
+        "className":"fa fa-instagram"
+      },
+      {
+        "name":"github",
+        "url":"",
+        "className":"fa fa-github"
+      }
+    ]
+  },
+  "resume":{
+    "skillmessage":"Skills at a glance:",
+    "education":[
+      {
+        "school":"Maharishi International University – Fairfield, Iowa",
+        "degree":"Master of Science in Computer Science",
+        "graduated":"April 2022 - August 2024",
+        "description":"Key Courses: Fundamental Programming Practices, Modern Programming Practices, Web Application Programming, Enterprise Architecture, Mobile Device Programming, Software Architecture, Project Management, Cloud Computing (AWS), Web Application Architecture."
+      },
+      {
+        "school":"St. Mary's University – Addis Ababa, Ethiopia",
+        "degree":"WBachelor of Science in Computer Science (2018)",
+        "graduated":"July 2018",
+        "description":""
+      }
+    ],
+    "work":[
+      {
+        "company":"BRIDGETECH, Addis Ababa, Ethiopia ",
+        "title":"Software Engineer II",
+        "years":"March 2021- April 2022",
+        "description":"Developed, integrated, customized, and maintained multiple backend applications. Developed enterprise solutions using Java, Spring Boot, and other Java technologies.Applied multiple design patterns and microservices during development of highly scalable enterprise-level web applications and RESTful APIs. Deployed multiple microservice applications on cloud using AWS.Deployed and managed applications on AWS, with expertise in AWS services including IAM, EC2, S3, RDS, Lambda, CloudFormation, DynamoDB, Aurora, CloudWatch, Route 53, API Gateway, CloudFront, EKS, SNS, SQS, and Step Functions.Implemented the transition from older modular monolithic architecture to a microservices architecture, employing cross-cutting technologies such as Apache Kafka, Spring Cloud, service discovery, load balancing, circuit breaking, and monitoring and logging tools like the ELK stack. Additionally, introduced an API gateway and distributed tracing using Zipkin."
+      },
+      {
+        "company":"Creative Computer System",
+        "title":"Software Engineer I",
+        "years":"March 2017 - February 2021",
+        "description":"Developed and maintained multiple web applications. Developed web application using React and spring boot. Defined software solutions with a focus on maintainability, scalability, and performance. Developed unit and integration test codes using testing frameworks such as JUnit and Mockito. Utilized both SQL (MySQL, PostgreSQL) and NoSQL (MongoDB) databases, designing models for optimal performance. Design REST APIs using best practices and specifications. Drove Agile development process through consistent analysis and improvement."
+      }
+    ],
+    "skills":[
+      {
+        "name":"Java",
+        "level":"80%"
+      },
+      {
+        "name":"Spring Boot",
+        "level":"70%"
+      },
+      {
+        "name":"ReactJs",
+        "level":"50%"
+      },
+      {
+        "name":"CSS",
+        "level":"50%"
+      },
+      {
+        "name":"Javascript",
+        "level":"80%"
+      },
+      {
+        "name":"AWS",
+        "level":"60%"
+      },
+      {
+        "name":"MySql",
+        "level":"80%"
+      },
+      {
+        "name":"MongoDb",
+        "level":"80%"
+      }
+    ]
+  },
+  "portfolio":{
+    "projects": [
+      {
+        "title":"Guest House Rental System, MIU (2022): ",
+        "category":"My Travel Blog for my post-university travels",
+        "image":"01.jpg",
+        "url":"https://www.canadianwanderlust.com"
+      }
+    
+    ]
+  }
+}
