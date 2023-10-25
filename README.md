@@ -7,3 +7,5 @@
 ## Oct 24 
 ## API Gateway, lambda and DynamoDB Completeed
 ## Front end form validation added
+
+## SNS email notification 
