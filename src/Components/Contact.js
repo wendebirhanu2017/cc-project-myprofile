@@ -2,6 +2,102 @@ import React, { Component } from "react";
 import { Fade, Slide } from "react-reveal";
 
 class Contact extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contactName: "",
+      contactEmail: "",
+      contactSubject: "",
+      contactMessage: "",
+      successMessage: "",
+      // Add state properties for validation
+      nameError: "",
+      emailError: "",
+      messageError: "",
+    };
+  }
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
+  // Function to validate email using a simple regex pattern
+  validateEmail = (email) => {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(email);
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    const { contactName, contactEmail, contactSubject, contactMessage } = this.state;
+    // Reset previous error messages
+    this.setState({
+      nameError: "",
+      emailError: "",
+      messageError: "",
+    });
+
+    // Validate form fields
+    let isValid = true;
+
+    if (contactName.trim() === "") {
+      this.setState({ nameError: "Name is required" });
+      isValid = false;
+    }
+
+    if (!this.validateEmail(contactEmail)) {
+      this.setState({ emailError: "Valid email is required" });
+      isValid = false;
+    }
+
+    if (contactMessage.trim() === "") {
+      this.setState({ messageError: "Message is required" });
+      isValid = false;
+    }
+
+    if (!isValid) {
+      // If any validation fails, prevent form submission
+      return;
+    }
+
+    // If all validations pass, proceed to submit the form
+    const requestBody = {
+      senderName: contactName,
+      senderEmail: contactEmail,
+      subject: contactSubject,
+      messageBody: contactMessage,
+    };
+
+    fetch('https://nyue0df8r4.execute-api.us-east-1.amazonaws.com/prod/contact', {
+      method: 'POST',
+      body: JSON.stringify(requestBody),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          this.setState({
+            contactName: "",
+            contactEmail: "",
+            contactSubject: "",
+            contactMessage: "",
+            successMessage: 'Message sent successfully.',
+          });
+          
+        } else {
+          this.setState({ successMessage: 'Message could not be sent. Please try again.' });
+        }
+      })
+      .catch((error) => {
+        console.error('An error occurred while submitting the form:', error);
+        this.setState({ successMessage: 'An error occurred. Please try again later.' });
+      });
+  };
+
   render() {
     if (!this.props.data) return null;
 
@@ -32,7 +128,7 @@ class Contact extends Component {
         <div className="row">
           <Slide left duration={1000}>
             <div className="eight columns">
-              <form action="" method="post" id="contactForm" name="contactForm">
+              <form onSubmit={this.handleSubmit}>
                 <fieldset>
                   <div>
                     <label htmlFor="contactName">
@@ -40,12 +136,13 @@ class Contact extends Component {
                     </label>
                     <input
                       type="text"
-                      defaultValue=""
                       size="35"
                       id="contactName"
                       name="contactName"
+                      value={this.state.contactName}
                       onChange={this.handleChange}
                     />
+                    <div className="error-message">{this.state.nameError}</div>
                   </div>
 
                   <div>
@@ -53,23 +150,24 @@ class Contact extends Component {
                       Email <span className="required">*</span>
                     </label>
                     <input
-                      type="text"
-                      defaultValue=""
+                      type="email"
                       size="35"
                       id="contactEmail"
                       name="contactEmail"
+                      value={this.state.contactEmail}
                       onChange={this.handleChange}
                     />
+                    <div className="error-message">{this.state.emailError}</div>
                   </div>
 
                   <div>
                     <label htmlFor="contactSubject">Subject</label>
                     <input
                       type="text"
-                      defaultValue=""
                       size="35"
                       id="contactSubject"
                       name="contactSubject"
+                      value={this.state.contactSubject}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -83,7 +181,10 @@ class Contact extends Component {
                       rows="15"
                       id="contactMessage"
                       name="contactMessage"
+                      value={this.state.contactMessage}
+                      onChange={this.handleChange}
                     ></textarea>
+                    <div className="error-message">{this.state.messageError}</div>
                   </div>
 
                   <div>
@@ -95,15 +196,12 @@ class Contact extends Component {
                 </fieldset>
               </form>
 
-              <div id="message-warning"> Error boy</div>
-              <div id="message-success">
-                <i className="fa fa-check"></i>Your message was sent, thank you!
-                <br />
+              <div>
+                {this.state.successMessage && <p>{this.state.successMessage}</p>}
               </div>
             </div>
           </Slide>
-
-          <Slide right duration={1000}>
+         <Slide right duration={1000}>
             <aside className="four columns footer-widgets">
               <div className="widget widget_contact">
                 <h4>Address and Phone</h4>
@@ -116,8 +214,6 @@ class Contact extends Component {
                   <span>{phone}</span>
                 </p>
               </div>
-
-             
             </aside>
           </Slide>
         </div>
